@@ -118,7 +118,7 @@ const projects: Project[] = [
     category: ["web", "backend"],
     color: "from-violet-500 to-purple-600",
     github: "servidor",
-    demo: "https://prince62058.github.io/servidor/",
+    demo: "https://prince62058.github.io/Seridorr-Full-Stack/",
     download: true,
   },
 ];
