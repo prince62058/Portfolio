@@ -71,7 +71,7 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="relative inline-block"
           >
-            <div className="w-32 h-32 sm:w-40 sm:h-40 mx-auto rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 p-1">
+            <div className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 mx-auto rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 p-1">
               <img 
                 src={ProfileImage}
                 alt="Prince Kumar"
