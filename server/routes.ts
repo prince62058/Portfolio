@@ -10,9 +10,9 @@ export async function registerRoutes(app) {
     try {
       const githubUsername = "prince62058";
       const repos = ["reservation-system", "music-webapp", "face-recognition-attendance"];
-      
+
       const stats: { [key: string]: { stars: number; forks: number; watchers: number } } = {};
-      
+
       // Check database first, then use cached/stored values
       for (const repo of repos) {
         const dbStats = await storage.getProjectStats(repo);
@@ -38,7 +38,7 @@ export async function registerRoutes(app) {
           };
         }
       }
-      
+
       res.json(stats);
     } catch (error) {
       console.error("Error fetching GitHub stats:", error);
@@ -53,7 +53,7 @@ export async function registerRoutes(app) {
       if (!response.ok) {
         throw new Error("Failed to fetch repositories");
       }
-      
+
       const repos = await response.json();
       const filteredRepos = repos
         .filter((repo: any) => !repo.fork && !repo.private)
@@ -72,7 +72,7 @@ export async function registerRoutes(app) {
           created_at: repo.created_at,
           updated_at: repo.updated_at,
         }));
-      
+
       res.json(filteredRepos);
     } catch (error) {
       console.error("Error fetching GitHub repositories:", error);
@@ -127,23 +127,38 @@ export async function registerRoutes(app) {
   });
 
   // Resume download endpoint
-  app.get("/api/resume", (req, res) => {
+  app.get('/api/resume', (req, res) => {
     try {
-      const resumePath = path.resolve(process.cwd(), "attached_assets", "princeUpdatedResume_1750631151263.pdf");
-      
-      if (fs.existsSync(resumePath)) {
-        res.download(resumePath, "Prince_Kumar_Resume.pdf", (err) => {
-          if (err) {
-            console.error("Error downloading resume:", err);
-            res.status(500).json({ error: "Failed to download resume" });
-          }
-        });
-      } else {
-        res.status(404).json({ error: "Resume not found" });
+      const path = require('path');
+      const fs = require('fs');
+
+      // Path to your actual resume PDF
+      const resumePath = path.join(__dirname, '../attached_assets/PrinceUpdatedResume_1752948908157.pdf');
+
+      // Check if file exists
+      if (!fs.existsSync(resumePath)) {
+        return res.status(404).json({ error: 'Resume file not found' });
       }
+
+      // Set headers for PDF download
+      res.setHeader('Content-Type', 'application/pdf');
+      res.setHeader('Content-Disposition', 'attachment; filename="Prince_Kumar_Resume.pdf"');
+      res.setHeader('Content-Length', fs.statSync(resumePath).size);
+
+      // Stream the actual PDF file
+      const fileStream = fs.createReadStream(resumePath);
+      fileStream.pipe(res);
+
+      fileStream.on('error', (error: any) => {
+        console.error('Error streaming resume:', error);
+        if (!res.headersSent) {
+          res.status(500).json({ error: 'Failed to download resume' });
+        }
+      });
+
     } catch (error) {
-      console.error("Error serving resume:", error);
-      res.status(500).json({ error: "Failed to serve resume" });
+      console.error('Error downloading resume:', error);
+      res.status(500).json({ error: 'Failed to download resume' });
     }
   });
 
