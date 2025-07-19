@@ -129,11 +129,8 @@ export async function registerRoutes(app) {
   // Resume download endpoint
   app.get('/api/resume', (req, res) => {
     try {
-      const path = require('path');
-      const fs = require('fs');
-
       // Path to your actual resume PDF
-      const resumePath = path.join(__dirname, '../attached_assets/PrinceUpdatedResume_1752948908157.pdf');
+      const resumePath = path.resolve(process.cwd(), 'attached_assets', 'PrinceUpdatedResume_1752948908157.pdf');
 
       // Check if file exists
       if (!fs.existsSync(resumePath)) {
