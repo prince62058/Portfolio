@@ -65,7 +65,7 @@ app.use((req, res, next) => {
 // Add MERN stack API routes
 app.get('/api/github-stats', async (req, res) => {
   try {
-    const repos = ['reservation-system', 'e-commerce-platform', 'task-management', 'social-media-dashboard', 'weather-app', 'portfolio-website'];
+    const repos = ['reservation-system', 'e-commerce-platform', 'task-management', 'social-media-dashboard', 'weather-app', 'portfolio-website', 'servidor'];
     const stats = {};
     
     for (const repo of repos) {

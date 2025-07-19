@@ -109,6 +109,18 @@ const projects: Project[] = [
     demo: "https://prince62058.github.io/HRMS/",
     download: true,
   },
+  {
+    id: "servidor",
+    title: "Servidor Full Stack",
+    description: "Complete full-stack web application with modern backend architecture and responsive frontend design, featuring comprehensive user management and API integration.",
+    icon: Globe,
+    tags: ["Full Stack", "Backend", "Frontend"],
+    category: ["web", "backend"],
+    color: "from-violet-500 to-purple-600",
+    github: "servidor",
+    demo: "https://prince62058.github.io/servidor/",
+    download: true,
+  },
 ];
 
 const filters = [
