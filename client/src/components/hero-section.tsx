@@ -66,70 +66,18 @@ export function HeroSection() {
         >
           {/* Profile Image */}
           <motion.div
-            initial={{ scale: 0, rotate: -180 }}
-            animate={{ scale: 1, rotate: 0 }}
-            transition={{ 
-              duration: 1, 
-              delay: 0.2,
-              type: "spring",
-              bounce: 0.6
-            }}
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
             className="relative inline-block"
           >
-            <motion.div 
-              className="w-40 h-40 sm:w-52 sm:h-52 md:w-60 md:h-60 mx-auto rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-600 p-1.5"
-              animate={{ 
-                rotate: 360,
-                scale: [1, 1.05, 1]
-              }}
-              transition={{
-                rotate: {
-                  duration: 20,
-                  ease: "linear",
-                  repeat: Infinity
-                },
-                scale: {
-                  duration: 2,
-                  ease: "easeInOut",
-                  repeat: Infinity
-                }
-              }}
-            >
-              <motion.img 
+            <div className="w-32 h-32 sm:w-40 sm:h-40 mx-auto rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 p-1">
+              <img 
                 src={ProfileImage}
                 alt="Prince Kumar"
-                className="w-full h-full rounded-full object-cover border-2 border-white/20 shadow-2xl"
-                whileHover={{ 
-                  scale: 1.1,
-                  rotate: 5,
-                  transition: { duration: 0.3 }
-                }}
-                animate={{
-                  y: [0, -10, 0]
-                }}
-                transition={{
-                  y: {
-                    duration: 3,
-                    ease: "easeInOut",
-                    repeat: Infinity
-                  }
-                }}
+                className="w-full h-full rounded-full object-cover"
               />
-            </motion.div>
-            
-            {/* Animated Ring Effect */}
-            <motion.div
-              className="absolute inset-0 rounded-full border-2 border-blue-400/30"
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.5, 0, 0.5]
-              }}
-              transition={{
-                duration: 2,
-                ease: "easeInOut",
-                repeat: Infinity
-              }}
-            />
+            </div>
           </motion.div>
 
           <div className="space-y-4">
