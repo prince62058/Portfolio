@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Download, ExternalLink, Github, Mail, Phone } from "lucide-react";
 import { motion } from "framer-motion";
 
-import IMG_0255 from "@assets/IMG_0255.jpg";
+import ProfileImage from "../../../attached_assets/Prince (2).jpg";
 
 const texts = [
   "MERN Stack Developer",
@@ -73,7 +73,7 @@ export function HeroSection() {
           >
             <div className="w-32 h-32 sm:w-40 sm:h-40 mx-auto rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 p-1 animate-bounce-slow">
               <img 
-                src={IMG_0255}
+                src={ProfileImage}
                 alt="Prince Kumar"
                 className="w-full h-full rounded-full object-cover pl-[0px] pr-[0px] pt-[0px] pb-[0px]"
               />
